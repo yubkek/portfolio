@@ -25,7 +25,13 @@
     <div class="container">
       <a class="back-link" href="../index.html#aiml">&larr; Back to portfolio</a>
       <h1 class="detail-title">Dr. AIbert</h1>
-      <p class="detail-sub">Dr. AIbert runs conversation turns through a LangGraph state machine: an intake node uses a tool-calling LLM (Llama 3.3 70B) to extract structured symptom data and check for emergency red flags, then a retrieval node embeds the query (fastembed/ONNX) to pull the top-5 relevant chunks from a Chroma vector store of 722 embedded MedlinePlus article chunks. A reasoning LLM (GPT-OSS 120B, high reasoning effort) synthesizes the conversation history and retrieved context into a 3-condition ranked differential with likelihood labels, while MemorySaver checkpoints full graph state per session so multi-turn context persists across requests. The whole pipeline is served via FastAPI with per-IP rate limiting, sitting behind a single /chat endpoint that the frontend calls statelessly aside from a client-generated session_id.</p>
+      <p class="detail-sub">Dr. AIbert runs conversation turns through a LangGraph state machine: an intake node uses a tool-calling LLM (Llama 3.3 70B) to extract
+  structured symptom data and check for emergency red flags, then a retrieval node embeds the query using a lightweight local embedding
+  model to pull the top-5 relevant chunks from a vector store of 722 embedded MedlinePlus article chunks. A reasoning LLM (GPT-OSS 120B,
+  high reasoning effort) synthesizes the conversation history and retrieved context into a 3-condition ranked differential with likelihood
+  labels, while a memory checkpoint saves the full graph state per session so multi-turn context persists across requests. The whole
+  pipeline is served via FastAPI with per-IP rate limiting, sitting behind a single chat endpoint that the frontend calls statelessly aside
+  from a client-generated session ID.</p>
       <div class="tags">
         <span class="tag">LangGraph</span>
         <span class="tag">Multi-Agent</span>
